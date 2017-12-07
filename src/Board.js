@@ -211,7 +211,8 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       var matrix = this.rows();
-      for (var i = 0; i < matrix.length; i++) {
+      var min = (matrix.length - 1) * -1;
+      for (var i = min; i < matrix.length; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) {
           return true;
         }
@@ -231,7 +232,8 @@
       var index = minorDiagonalColumnIndexAtFirstRow;
       var matrix = this.rows();
       var diagArr = [];
-      var c =  matrix.length + (matrix.length / 2) - index;
+      var c =  (matrix.length) +2 - index;
+      console.log("index",index, 'c', c);
       // console.log(matrix);
         if (index < matrix.length && c >= 0) {
         for (var r = 0; r < matrix.length; r++) {
@@ -245,7 +247,7 @@
           c--;
           //}
         }
-        console.log(diagArr);
+        // console.log(diagArr);
         var count = 0;
         for (var i = 0; i < diagArr.length; i++) {
           if (diagArr[i] === 1) {
