@@ -231,19 +231,21 @@
       var index = minorDiagonalColumnIndexAtFirstRow;
       var matrix = this.rows();
       var diagArr = [];
-      var c = matrix.length - 1;
-      
-      if (index < matrix.length) {
+      var c =  matrix.length + (matrix.length / 2) - index;
+      // console.log(matrix);
+        if (index < matrix.length && c >= 0) {
         for (var r = 0; r < matrix.length; r++) {
+          
           diagArr.push(matrix[r][c]);
           // for (var c = matrix.length - 1; c >= 0; c--) {
           //   if (matrix[r][c]) {
           //     diagArr.push(matrix[r][c]);
           //     console.log(diagArr);
           //   }
-            c--;
+          c--;
           //}
         }
+        console.log(diagArr);
         var count = 0;
         for (var i = 0; i < diagArr.length; i++) {
           if (diagArr[i] === 1) {
