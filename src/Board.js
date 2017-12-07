@@ -253,6 +253,14 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
+      var matrix = this.rows();
+      var max = (matrix.length - 1) * 2;
+      for (var i = 0; i < max; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+        
+      }
       return false; // fixme
     }
 
