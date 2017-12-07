@@ -235,23 +235,21 @@
       var c = index;
       
       for (var r = 0; r < matrix.length; r++) {
-        if(index >= 0 && index < matrix.length) {
-          if(matrix[r][c]) {
+        if (index >= 0 ) {
+          if (matrix[r][c]) {
             diagArr.push(matrix[r][c]);
           }
+        // } else if (index >= matrix.length ) {
+        //   if (matrix[r][c]) {
+        //     diagArr.push(matrix[r][c]);
+        //   }
         }
-        //figure out what to do when input > matrix.length
-        else if (index >=  matrix.length ) {
-          if(matrix[r][c]) {
-            diagArr.push(matrix[r][c]);
-          }
-        }
-        console.log(diagArr);
+        // console.log(diagArr);
         c--;
       }
-      if(diagArr.length){
-        if (diagArr.reduce(function (a,b){
-          return a+b;
+      if (diagArr.length) {
+        if (diagArr.reduce(function (a, b) {
+          return a + b;
         }) > 1) {
           return true;
         }
@@ -278,12 +276,12 @@
 
   });
 
-var makeEmptyMatrix = function(n) {
-  return _(_.range(n)).map(function() {
+  var makeEmptyMatrix = function(n) {
     return _(_.range(n)).map(function() {
-      return 0;
+      return _(_.range(n)).map(function() {
+        return 0;
+      });
     });
-  });
-};
+  };
 
 }());
