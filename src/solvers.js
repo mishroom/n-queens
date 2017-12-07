@@ -23,14 +23,17 @@ window.findNRooksSolution = function(n) {
   var matrix = [];
   
   for (var i = 0; i < n; i++) {
-    matrix.push(new Array(n));
+    var miniArr = [];
+    for (var j = 0; j < n; j++) {
+      miniArr.push(0);
+    }
+    matrix.push(miniArr);
   }
-  
-  matrix = [[5,0,0,0],[6,0,0,0],[0,0,0,0],[0,0,0,0]];
-  
+  // matrix[0][0] = 1;
+  console.log(matrix);
 
   //create a function to iterate and find conclicts and/or place rooks
-  var placeRooks = function (index) {
+  // var placeRooks = function (index) {
     //index is a colun index specific to row 1 (ie matrix[0]);
     //check if there is a conflict with functions already defined
     
@@ -38,28 +41,28 @@ window.findNRooksSolution = function(n) {
     //place a rook at index
     
     //starting rook
-    var c = index;
-    matrix[0][c] = 1;
+  //   var c = index;
+  //   matrix[0][c] = 1;
     
-    for (var r = 0; r < n; r++) {
-      for (var c = 0; c < n; c++) {
-        matrix[r][c] = 1;
-        console.log("matrix before checking conflict",matrix);
-        if (this.Board.prototype.hasAnyRooksConflicts) {
-          matrix[r][c] = 0;
-        }
+  //   for (var r = 0; r < n; r++) {
+  //     for (var c = 0; c < n; c++) {
+  //       matrix[r][c] = 1;
+  //       console.log("matrix before checking conflict",matrix);
+  //       if (this.Board.prototype.hasAnyRooksConflicts) {
+  //         matrix[r][c] = 0;
+  //       }
         
-        console.log("matrix after checking conflict",matrix);
-      }
-    }   
-  };
-  placeRooks(0);
-  //figure out an arbitrary starting index
-  // for (var c = 0; c < matrix[0].length; c++) {
-  //   //passing in a column index specifically on row 1
-  // }
+  //       console.log("matrix after checking conflict",matrix);
+  //     }
+  //   }   
+  // };
+  // placeRooks(0);
+  // //figure out an arbitrary starting index
+  // // for (var c = 0; c < matrix[0].length; c++) {
+  // //   //passing in a column index specifically on row 1
+  // // }
       
-  // console.log("matrix",matrix);
+  // // console.log("matrix",matrix);
   
   //first build the nxn matrix ##
   //inside the matrix, we need to find where we can put the rooks such that there are no conflicts
