@@ -156,24 +156,24 @@
         // if (matrix[i][i + index]) {
           diagArrayR.push(matrix[i][i + index]);
         // }
-          
+
+      }
+      var countR = 0;
+      for (var i = 0; i < diagArrayR.length; i++) {
+        if (diagArrayR[i] === 1) {
+          countR++;
         }
-        var countR = 0;
-        for (var i = 0; i < diagArrayR.length; i++) {
-          if (diagArrayR[i] === 1) {
-            countR++;
-          }
-          if (countR > 1) {
-            return true;
-          }
+        if (countR > 1) {
+          return true;
         }
       }
-      if (majorDiagonalColumnIndexAtFirstRow < 0) {
-        index = Math.abs(majorDiagonalColumnIndexAtFirstRow);
-        for (var i = 0; i + index < matrix.length; i++) {
+    }
+    if (majorDiagonalColumnIndexAtFirstRow < 0) {
+      index = Math.abs(majorDiagonalColumnIndexAtFirstRow);
+      for (var i = 0; i + index < matrix.length; i++) {
           // console.log(matrix[i][i + index]);
           // if (matrix[i][i + index]) {
-          diagArrayC.push(matrix[i + index][i]);
+            diagArrayC.push(matrix[i + index][i]);
           //}
           // console.log(diagArrayC);  
         }
@@ -188,7 +188,7 @@
         }
 
 
-      
+
 
       }
 
@@ -235,9 +235,18 @@
       var c = index;
       
       for (var r = 0; r < matrix.length; r++) {
-        if(c<matrix.length) {
-          diagArr.push(matrix[r][c]);
+        if(index >= 0 && index < matrix.length) {
+          if(matrix[r][c]) {
+            diagArr.push(matrix[r][c]);
+          }
         }
+        //figure out what to do when input > matrix.length
+        else if (index >=  matrix.length ) {
+          if(matrix[r][c]) {
+            diagArr.push(matrix[r][c]);
+          }
+        }
+        console.log(diagArr);
         c--;
       }
       if(diagArr.length){
@@ -269,12 +278,12 @@
 
   });
 
-  var makeEmptyMatrix = function(n) {
+var makeEmptyMatrix = function(n) {
+  return _(_.range(n)).map(function() {
     return _(_.range(n)).map(function() {
-      return _(_.range(n)).map(function() {
-        return 0;
-      });
+      return 0;
     });
-  };
+  });
+};
 
 }());
