@@ -151,11 +151,11 @@
       var diagArrayC = [];
       // console.log(index);
       if (majorDiagonalColumnIndexAtFirstRow >= 0) {
-          for (var i = 0; i + index < matrix.length; i++) {
-          // console.log(matrix[i]);
-          // if (matrix[i][i + index]) {
-            diagArrayR.push(matrix[i][i + index]);
-          // }
+        for (var i = 0; i + index < matrix.length; i++) {
+        // console.log(matrix[i]);
+        // if (matrix[i][i + index]) {
+          diagArrayR.push(matrix[i][i + index]);
+        // }
           
         }
         var countR = 0;
@@ -173,9 +173,9 @@
         for (var i = 0; i + index < matrix.length; i++) {
           // console.log(matrix[i][i + index]);
           // if (matrix[i][i + index]) {
-            diagArrayC.push(matrix[i + index][i]);
+          diagArrayC.push(matrix[i + index][i]);
           //}
-        console.log(diagArrayC);  
+          // console.log(diagArrayC);  
         }
         var countC = 0;
         for (var i = 0; i < diagArrayC.length; i++) {
@@ -190,7 +190,7 @@
 
       
 
-    }
+      }
 
 
       // if (diagArrayR.reduce(function (a, b) {
@@ -227,7 +227,33 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-
+      // console.log(minorDiagonalColumnIndexAtFirstRow);
+      var index = minorDiagonalColumnIndexAtFirstRow;
+      var matrix = this.rows();
+      var diagArr = [];
+      var c = matrix.length - 1;
+      
+      if (index < matrix.length) {
+        for (var r = 0; r < matrix.length; r++) {
+          diagArr.push(matrix[r][c]);
+          // for (var c = matrix.length - 1; c >= 0; c--) {
+          //   if (matrix[r][c]) {
+          //     diagArr.push(matrix[r][c]);
+          //     console.log(diagArr);
+          //   }
+            c--;
+          //}
+        }
+        var count = 0;
+        for (var i = 0; i < diagArr.length; i++) {
+          if (diagArr[i] === 1) {
+            count ++;
+          }
+        }
+        if (count > 1) {
+          return true;
+        }
+      }
 
 
       return false; // fixme
@@ -243,12 +269,12 @@
 
   });
 
-var makeEmptyMatrix = function(n) {
-  return _(_.range(n)).map(function() {
+  var makeEmptyMatrix = function(n) {
     return _(_.range(n)).map(function() {
-      return 0;
+      return _(_.range(n)).map(function() {
+        return 0;
+      });
     });
-  });
-};
+  };
 
 }());
